@@ -22,18 +22,25 @@
           </a-card>
         </a-card-grid>
       </a-card>
+      <a-modal v-model ="visible" title="实时数据展示" @ok="handleOk" destroyOnClose="true">
+        <real-time-data :deviceName="selectedDevice"/>
+      </a-modal>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
 import { getAllEdgeDevice } from '@/api/device'
+import RealTimeData from './RealTimeData.vue'
 
 export default {
   name: 'DeviceManage',
+  components: {RealTimeData},
   data () {
     return {
-      deviceList: []
+      deviceList: [],
+      visible: false,
+      selectedDevice: ""
     }
   },
   created () {
@@ -46,12 +53,17 @@ export default {
   methods: {
     handleDeviceCheck (e) {
       const deviceName = e.deviceName
-      axios.get('/api/device/getDeviceData?deviceName=' + deviceName).then((res) => {
-        alert(JSON.stringify(res.data))
-      }).catch((res) => {
-        console.log(res)
-        alert('查询失败！')
-      })
+      this.selectedDevice = deviceName
+      this.visible = true
+      // axios.get('/api/device/getDeviceData?deviceName=' + deviceName).then((res) => {
+      //   alert(JSON.stringify(res.data))
+      // }).catch((res) => {
+      //   console.log(res)
+      //   alert('边缘端离线，连接边缘端即可！')
+      // })
+    },
+    handleOk (e) {
+      this.visible = false
     }
   }
 }
