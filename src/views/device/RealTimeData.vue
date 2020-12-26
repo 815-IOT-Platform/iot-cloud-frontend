@@ -3,7 +3,7 @@
         当前设备为：{{deviceName}}
         <br/>
         <div>
-            实时数据：
+            体征数据：
             <ul>
                 <li v-for="(value,key,index) in properties" :key="key" > 
                     属性：
