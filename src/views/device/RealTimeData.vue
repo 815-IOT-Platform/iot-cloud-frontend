@@ -1,9 +1,18 @@
 <template>
     <div>
         当前设备为：{{deviceName}}
-        <ul>
-          <li v-for="(value,key,index) in properties" :key="key"> 属性：{{index}}: {{key}} ------ {{value}} </li>
-      </ul>
+        <br/>
+        <div>
+            实时数据：
+            <ul>
+                <li v-for="(value,key,index) in properties" :key="key" > 
+                    属性：
+                    <div>
+                        {{index}}: {{key}} ------ {{value}} 
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -19,7 +28,8 @@ export default {
         url: 'ws://localhost:7080/ws',
         subscribe: '/queue/Device/' + this.deviceName,
         client: null,
-        properties: {}
+        properties: {},
+        propertyType: ""
     }
   },
   created () {
@@ -56,7 +66,10 @@ export default {
     getSubscribeCallback (destination) {
         return content => {
             console.log(`Receive subscribed message from destination ${destination}, content = ${content}`)
-            this.properties = JSON.parse(content.body).msg.properties
+            this.propertyType = JSON.parse(content.body).msg.propertyType
+            if (this.propertyType == "realTime") {
+                this.properties = JSON.parse(content.body).msg.properties
+            }
         }
     },
     disconnect () {
