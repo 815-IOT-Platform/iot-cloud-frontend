@@ -119,10 +119,10 @@
 </template>
 
 <script>
-import { addDeviceModel } from '@/api/device'
+import { addEdgeDeviceModel } from '@/api/device'
 let id = 0
 export default {
-  name: 'AddDeviceModel',
+  name: 'AddEdgeDeviceModel',
   data () {
     return {
       formLayout: 'horizontal',
@@ -168,7 +168,7 @@ export default {
             })
           }
 
-          addDeviceModel(deviceModel).then(res => {
+          addEdgeDeviceModel(deviceModel).then(res => {
             console.log(res)
             alert('设备模型创建成功')
           }).catch(res => {

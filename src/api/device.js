@@ -24,7 +24,7 @@ export function addEdgeDevice (parameter) {
 
 export function addEdgeDeviceModel (parameter) {
   return axios({
-    url: '/device/device/addDeviceModel',
+    url: '/device/model/addDeviceModel',
     method: 'post',
     data: parameter
   })
