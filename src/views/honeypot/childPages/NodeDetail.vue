@@ -23,21 +23,11 @@
           <a-divider/>
 
           <div class="account-center-tags">
-            <div class="tagsTitle">资源占用</div>
-            <div>
-              资源占用
-            </div>
+            <div class="tagsTitle">蜜罐管理</div>
+              <a-button type="primary" style="margin-left:50px;">新增蜜罐</a-button>
+              <a-button type="primary" style="margin-left:50px;">蜜罐拓扑</a-button>
           </div>
           <a-divider :dashed="true"/>
-
-          <div class="account-center-team">
-            <div class="teamTitle">节点配置</div>
-            <a-spin :spinning="teamSpinning">
-              <div class="members">
-                节点配置
-              </div>
-            </a-spin>
-          </div>
         </a-card>
       </a-col>
       <a-col :md="24" :lg="17">
@@ -49,6 +39,7 @@
           @tabChange="key => handleTabChange(key, 'noTitleKey')"
         >
           <pot-card v-if="noTitleKey === 'honeypot'" :node="node.name"></pot-card>
+          <node-status v-else-if="noTitleKey === 'resource'" :node="node"></node-status>
         </a-card>
       </a-col>
     </a-row>
@@ -58,7 +49,7 @@
 <script>
 import { PageView, RouteView } from '@/layouts'
 import { getEdgeNode } from '@/api/honeypot'
-import { PotCard } from './page'
+import { PotCard, NodeStatus } from './page'
 
 import { mapGetters } from 'vuex'
 
@@ -67,7 +58,8 @@ export default {
   components: {
     RouteView,
     PageView,
-    PotCard
+    PotCard,
+    NodeStatus
   },
   data () {
     return {
@@ -82,11 +74,7 @@ export default {
         },
         {
           key: 'resource',
-          tab: '资源占用'
-        },
-        {
-          key: 'config',
-          tab: '节点配置'
+          tab: '节点详情'
         }
       ],
       noTitleKey: 'honeypot',
