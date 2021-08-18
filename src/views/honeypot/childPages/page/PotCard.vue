@@ -8,18 +8,22 @@
         <a-card :hoverable="true">
           <a-card-meta>
             <div style="margin-bottom: 3px" slot="title">{{ item.name }}</div>
-<!--            <a-avatar class="card-avatar" slot="avatar" src="" size="small"/>-->
+            <img slot="avatar" src="../../static/pot.png" width="50rpx" height="50rpx"/>
             <div class="meta-cardInfo" slot="description">
-<!--              <div>-->
-<!--                <p>活跃用户</p>-->
-<!--                <p>-->
-<!--                  <span>{{ item.activeUser }}<span>万</span></span>-->
-<!--                </p>-->
-<!--              </div>-->
-<!--              <div>-->
-<!--                <p>新增用户</p>-->
-<!--                <p>{{ item.newUser | NumberFormat }}</p>-->
-<!--              </div>-->
+              <div>
+                <p>蜜罐状态</p>
+                <p>
+                  <span>{{ item.status }}</span>
+                </p>
+              </div>
+              <div>
+                <p>蜜罐协议</p>
+                <p>{{ item.protocol }}</p>
+              </div>
+              <div>
+                <p>蜜罐端口</p>
+                <p>{{ item.port }}</p>
+              </div>
             </div>
           </a-card-meta>
           <template class="ant-card-actions" slot="actions">
