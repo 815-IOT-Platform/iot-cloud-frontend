@@ -27,32 +27,20 @@
             </div>
           </a-card-meta>
           <template class="ant-card-actions" slot="actions">
-            <a>
-              <a-icon type="download"/>
+            <a v-if="item.status === 'OFF'">
+              <a-button @click="openHoneypot(item.name)">
+                开启蜜罐
+              </a-button>
+            </a>
+            <a v-else-if="item.status === 'ON'">
+              <a-button @click="closeHoneypot(item.name)">
+                关闭蜜罐
+              </a-button>
             </a>
             <a>
-              <a-icon type="edit"/>
-            </a>
-            <a>
-              <a-icon type="share-alt"/>
-            </a>
-            <a>
-              <a-dropdown>
-                <a class="ant-dropdown-link" href="javascript:;">
-                  <a-icon type="ellipsis"/>
-                </a>
-                <a-menu slot="overlay">
-                  <a-menu-item>
-                    <a href="javascript:;">1st menu item</a>
-                  </a-menu-item>
-                  <a-menu-item>
-                    <a href="javascript:;">2nd menu item</a>
-                  </a-menu-item>
-                  <a-menu-item>
-                    <a href="javascript:;">3rd menu item</a>
-                  </a-menu-item>
-                </a-menu>
-              </a-dropdown>
+              <a-button >
+                时序数据
+              </a-button>
             </a>
           </template>
         </a-card>
@@ -63,7 +51,7 @@
 </template>
 
 <script>
-import { getPotList } from '@/api/honeypot'
+import { getPotList, openPot, closePot } from '@/api/honeypot'
 
 export default {
   name: 'Pot',
@@ -82,6 +70,21 @@ export default {
       getPotList(this.node).then(res => {
         this.potList = res.data
         console.log(this.potList)
+      })
+    },
+
+    openHoneypot (pot) {
+      openPot(pot).then(res => {
+        console.log(res)
+        this.getDatasource()
+        alert('开启成功！')
+      })
+    },
+
+    closeHoneypot (pot) {
+      closePot(pot).then(res => {
+        this.getDatasource()
+        alert('关闭成功！')
       })
     }
   }

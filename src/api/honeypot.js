@@ -20,3 +20,25 @@ export function getPotList (node) {
     method: 'get'
   })
 }
+
+export function openPot (pot) {
+  return axios({
+    url: '/honeyBot/honeypot/updatePot',
+    method: 'post',
+    data: {
+      name: pot,
+      status: 'ON'
+    }
+  })
+}
+
+export function closePot (pot) {
+  return axios({
+    url: '/honeyBot/honeypot/updatePot',
+    method: 'post',
+    data: {
+      name: pot,
+      status: 'OFF'
+    }
+  })
+}
