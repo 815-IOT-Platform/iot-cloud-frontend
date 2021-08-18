@@ -24,7 +24,7 @@
 
           <div class="account-center-tags">
             <div class="tagsTitle">蜜罐管理</div>
-              <a-button type="primary" style="margin-left:50px;">新增蜜罐</a-button>
+              <a-button type="primary" style="margin-left:50px;" @click="showModal">新增蜜罐</a-button>
               <a-button type="primary" style="margin-left:50px;">蜜罐拓扑</a-button>
           </div>
           <a-divider :dashed="true"/>
@@ -43,15 +43,34 @@
         </a-card>
       </a-col>
     </a-row>
+    <a-modal v-model="visible" title="新增蜜罐" :footer="null">
+      <a-form :form="form" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }" @submit="handleSubmit">
+        <a-form-item label="蜜罐协议">
+          <a-select :size="size" initialValue="a1" v-decorator="['protocol', { rules: [{ required: true, message: '请输入蜜罐协议' }] }]" @change="handleSelect">
+            <a-select-option v-for="protocol in protocols" :key="protocol" :value="protocol">
+              {{ protocol }}
+            </a-select-option>
+          </a-select>
+        </a-form-item>
+        <a-form-item label="蜜罐端口">
+          <a-input
+            v-decorator="['port', { rules: [{ required: true, message: '请输入蜜罐的端口' }] }]"
+          />
+        </a-form-item>
+        <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
+          <a-button type="primary" html-type="submit">
+            创建
+          </a-button>
+        </a-form-item>
+      </a-form>
+    </a-modal>
   </div>
 </template>
 
 <script>
 import { PageView, RouteView } from '@/layouts'
-import { getEdgeNode } from '@/api/honeypot'
+import { getEdgeNode, createPot } from '@/api/honeypot'
 import { PotCard, NodeStatus } from './page'
-
-import { mapGetters } from 'vuex'
 
 export default {
   name: 'NodeDetail',
@@ -63,10 +82,7 @@ export default {
   },
   data () {
     return {
-
-      teams: [],
-      teamSpinning: true,
-
+      visible: false,
       tabListNoTitle: [
         {
           key: 'honeypot',
@@ -78,7 +94,15 @@ export default {
         }
       ],
       noTitleKey: 'honeypot',
-      node: {}
+      node: {},
+      protocols: [
+        'REDIS',
+        'TELNET',
+        'HTTP',
+        'HTTPS'
+      ],
+      selectedProtocol: '',
+      form: this.$form.createForm(this, { name: 'pot' })
     }
   },
   mounted () {
@@ -88,14 +112,6 @@ export default {
     this.getNodeInfo(this.$route.params.id)
   },
   methods: {
-    ...mapGetters(['nickname', 'avatar']),
-
-    getTeams () {
-      this.$http.get('/workplace/teams').then(res => {
-        this.teams = res.result
-        this.teamSpinning = false
-      })
-    },
 
     handleTabChange (key, type) {
       this[type] = key
@@ -105,6 +121,39 @@ export default {
       getEdgeNode(node).then(res => {
         this.node = res.data
         console.log(this.node)
+      })
+    },
+
+    handleOk (e) {
+      console.log(e)
+      this.visible = false
+    },
+
+    showModal () {
+      this.visible = true
+    },
+
+    handleSelect (e) {
+      console.log('select protocol is ' + e)
+      this.selectedProtocol = e
+    },
+
+    handleSubmit (e) {
+      e.preventDefault()
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          const pot = {
+            port: values.port,
+            protocol: values.protocol,
+            node: this.node.name,
+            status: 'OFF'
+          }
+          createPot(pot).then(res => {
+            alert('蜜罐创建成功！')
+            this.visible = false
+            this.getNodeInfo(this.node.name)
+          })
+        }
       })
     }
   }

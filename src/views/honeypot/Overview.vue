@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-card title="边缘蜜罐总览">
+    <a-card title="边缘节点总览">
       <a-card-grid v-for="(node) in nodeList" :key="node.name" style="width:25%;text-align:center">
         <a-card hoverable style="width: 240px">
           <img
@@ -10,11 +10,11 @@
           />
           <template slot="actions" class="ant-card-actions">
             <a-button type="primary" ghost @click="checkNodeDetail(node)">
-              节点详情
+              蜜罐管理
             </a-button>
-            <a-button type="primary" ghost @click="managePot(node)">
-              蜜罐管控
-            </a-button>
+<!--            <a-button type="primary" ghost @click="managePot(node)">-->
+<!--              蜜罐管控-->
+<!--            </a-button>-->
           </template>
           <a-card-meta :title="node.name" :description="node.status">
           </a-card-meta>

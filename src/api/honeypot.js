@@ -42,3 +42,11 @@ export function closePot (pot) {
     }
   })
 }
+
+export function createPot (data) {
+  return axios({
+    url: '/honeyBot/honeypot/createPot',
+    method: 'post',
+    data: data
+  })
+}
