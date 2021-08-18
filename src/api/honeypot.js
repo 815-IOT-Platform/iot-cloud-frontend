@@ -13,3 +13,10 @@ export function getEdgeNode (node) {
     method: 'get'
   })
 }
+
+export function getPotList (node) {
+  return axios({
+    url: '/honeyBot/honeypot/getPotByNodes/' + node,
+    method: 'get'
+  })
+}

@@ -48,7 +48,7 @@ export default {
     },
     checkNodeDetail (e) {
       console.log(e)
-      this.$router.push({ path: `/honeypot/nodeDetail` })
+      this.$router.push({ path: `/honeypot/nodeDetail/${e.name}` })
     },
     managePot (e) {
       console.log(e)
