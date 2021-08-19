@@ -42,6 +42,11 @@
                 时序数据
               </a-button>
             </a>
+            <a>
+              <a-button @click="deleteHoneypot(item.name)">
+                删除蜜罐
+              </a-button>
+            </a>
           </template>
         </a-card>
       </a-list-item>
@@ -51,7 +56,7 @@
 </template>
 
 <script>
-import { getPotList, openPot, closePot } from '@/api/honeypot'
+import { getPotList, openPot, closePot, deletePot } from '@/api/honeypot'
 
 export default {
   name: 'Pot',
@@ -85,6 +90,13 @@ export default {
       closePot(pot).then(res => {
         this.getDatasource()
         alert('关闭成功！')
+      })
+    },
+
+    deleteHoneypot (pot) {
+      deletePot(pot).then(res => {
+        this.getDatasource()
+        alert('删除成功！')
       })
     }
   }

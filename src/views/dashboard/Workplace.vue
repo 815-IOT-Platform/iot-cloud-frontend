@@ -2,7 +2,7 @@
   <page-view :avatar="avatar" :title="false">
     <div slot="headerContent">
       <div class="title">{{ timeFix }}，{{ user.userName }}<span class="welcome-text">，{{ welcome }}</span></div>
-      <div>维保工程师 | 金城安防 - 维修维护服务部 - 安安运维平台</div>
+      <div>Edge Pot</div>
     </div>
     <div slot="extra">
       <a-row class="more-info">

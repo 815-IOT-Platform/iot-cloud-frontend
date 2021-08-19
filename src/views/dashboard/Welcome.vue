@@ -2,7 +2,7 @@
   <page-view :avatar="avatar" :title="false">
     <div slot="headerContent">
       <div class="title">{{ timeFix }}，{{ user.userName }}<span class="welcome-text">，{{ welcome }}</span></div>
-      <div>维保工程师 | 金城安防 - 维修维护服务部 - 安安运维平台</div>
+      <div>Edge Pot</div>
     </div>
     <div slot="extra">
       <a-row class="more-info">
@@ -21,7 +21,7 @@
     <div>
       <a-row :gutter="24">
         <a-col :xl="16" :lg="24" :md="24" :sm="24" :xs="24">
-          <a-card :bordered="false" title="安安运维平台">
+          <a-card :bordered="false" title="Edge Pot">
             <p><strong>安安运维平台</strong> 由安安运维（北京）科技有限公司搭建 <strong>主营业务：</strong>  <strong>维修、巡检、备品备件... </strong>等多维度业务。</p>
             <p><strong>公司官网 </strong><a href="https://ananops.com" target="_blank">https://ananops.com</a></p>
             <p><strong>安安运维平台</strong> 依托北京市安全技术防范行业协会资源</p>

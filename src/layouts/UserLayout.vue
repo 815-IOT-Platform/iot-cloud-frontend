@@ -4,12 +4,12 @@
       <div class="top">
         <div class="header">
           <a href="/">
-            <img src="~@/assets/logo.svg" class="logo" alt="logo">
-            <span class="title">安安运维</span>
+            <img src="~@/assets/logo.png" class="logo" alt="logo">
+            <span class="title">Edge Pot</span>
           </a>
         </div>
         <div class="desc">
-          深耕行业，专注安防系统维保、效能提升。
+          关注边缘计算物联网安全。
         </div>
       </div>
 
@@ -22,7 +22,7 @@
           <a href="_self">条款</a>
         </div>
         <div class="copyright">
-          Copyright &copy; 2020 安安运维（北京）科技有限公司
+          Copyright &copy; 2021 边缘计算 —— 蜜罐管理系统
         </div>
       </div>
     </div>

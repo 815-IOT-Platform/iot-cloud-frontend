@@ -50,3 +50,10 @@ export function createPot (data) {
     data: data
   })
 }
+
+export function deletePot (pot) {
+  return axios({
+    url: '/honeyBot/honeypot/deletePot/' + pot,
+    method: 'delete'
+  })
+}

@@ -18,7 +18,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: '安安运维',
+      default: 'Edge Pot',
       required: false
     },
     showTitle: {

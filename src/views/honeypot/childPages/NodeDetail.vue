@@ -151,7 +151,6 @@ export default {
           createPot(pot).then(res => {
             alert('蜜罐创建成功！')
             this.visible = false
-            this.getNodeInfo(this.node.name)
           })
         }
       })
