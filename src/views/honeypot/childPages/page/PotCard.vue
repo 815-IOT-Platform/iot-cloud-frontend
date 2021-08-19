@@ -38,7 +38,7 @@
               </a-button>
             </a>
             <a>
-              <a-button >
+              <a-button @click="checkPotDate(item.name)">
                 时序数据
               </a-button>
             </a>
@@ -98,6 +98,11 @@ export default {
         this.getDatasource()
         alert('删除成功！')
       })
+    },
+
+    checkPotDate (pot) {
+      console.log(this.$router)
+      this.$router.push({ path: `/honeypot/potData/${pot}` })
     }
   }
 }

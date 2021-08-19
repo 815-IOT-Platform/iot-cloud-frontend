@@ -57,3 +57,13 @@ export function deletePot (pot) {
     method: 'delete'
   })
 }
+
+export function getPotData (pot) {
+  return axios({
+    url: '/honeyBot/honeypot/searchPot',
+    method: 'post',
+    data: {
+      name: pot
+    }
+  })
+}
