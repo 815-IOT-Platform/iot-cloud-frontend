@@ -1,7 +1,7 @@
 <template>
   <div>
     <a-card title="边缘节点总览">
-      <a-card-grid v-for="(node) in nodeList" :key="node.name" style="width:25%;text-align:center">
+      <a-card-grid v-for="(node) in nodeList" :key="node.name" style="width:25%;text-align:center" >
         <a-card hoverable style="width: 240px">
           <img
             slot="cover"

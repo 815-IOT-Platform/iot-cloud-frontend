@@ -25,7 +25,7 @@
           <div class="account-center-tags">
             <div class="tagsTitle">蜜罐管理</div>
               <a-button type="primary" style="margin-left:50px;" @click="showModal">新增蜜罐</a-button>
-              <a-button type="primary" style="margin-left:50px;">蜜罐拓扑</a-button>
+              <a-button type="primary" style="margin-left:50px;">综合分析</a-button>
           </div>
           <a-divider :dashed="true"/>
         </a-card>
