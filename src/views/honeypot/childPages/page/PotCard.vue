@@ -39,7 +39,7 @@
             </a>
             <a>
               <a-button @click="checkPotDate(item.name)">
-                时序数据
+                报警数据
               </a-button>
             </a>
             <a>

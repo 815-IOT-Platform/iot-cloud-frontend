@@ -29,6 +29,9 @@
     "nprogress": "^0.2.0",
     "stompjs": "^2.3.3",
     "tinymce": "^5.2.0",
+    "vis-data": "^7.1.2",
+    "vis-network": "^9.0.5",
+    "vis-util": "^5.0.2",
     "viser-vue": "^2.4.6",
     "vue": "^2.6.10",
     "vue-clipboard2": "^0.2.1",
@@ -38,6 +41,7 @@
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.1.2",
     "vue-svg-component-runtime": "^1.0.1",
+    "vue-vis-network": "^1.0.2",
     "vuex": "^3.1.1",
     "wangeditor": "^3.1.1"
   },
