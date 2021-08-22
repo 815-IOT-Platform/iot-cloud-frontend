@@ -1,11 +1,10 @@
-<template>
+`<template>
   <a-card title="蜜罐拓扑">
     <network
       class="network"
       :nodes="network.nodes"
       :edges="network.edges"
       :options="network.options"
-      @select-node="getPotAlarmCnt"
     ></network>
   </a-card>
 </template>
@@ -70,10 +69,9 @@ export default {
         })
         let cnt = 2
         res.data.map(function (pot) {
-          console.log(pot, cnt)
           that.network.nodes.push({
             id: cnt,
-            label: '蜜罐名：' + pot.name + '\n被攻击数: ' + pot.attackCnt + '\n端口：' + pot.port,
+            label: '蜜罐名：' + pot.name + '\n协议：' + pot.protocol + '\n被攻击数: ' + pot.attackCnt + '\n端口：' + pot.port,
             shape: 'image',
             image: Pot,
             smooth: true
@@ -86,11 +84,8 @@ export default {
           cnt++
         })
       })
-    },
-
-    getPotAlarmCnt () {
-      alert('啦啦啦')
     }
+
   }
 }
 </script>
@@ -104,3 +99,4 @@ export default {
 }
 
 </style>
+`

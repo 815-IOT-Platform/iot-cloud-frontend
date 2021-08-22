@@ -19,6 +19,7 @@ import 'ant-design-vue/dist/antd.less'
 import i18n from './locales'
 import './components/global.less'
 import { Dialog } from '@/components'
+import dataV from '@jiaminghi/data-view';
 
 Vue.config.productionTip = false
 Vue.config.devtools = true
@@ -26,6 +27,7 @@ Vue.config.devtools = true
 // mount axios Vue.$http and this.$http
 Vue.use(VueAxios)
 Vue.use(Dialog)
+Vue.use(dataV)
 
 new Vue({
   router,

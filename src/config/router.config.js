@@ -7,31 +7,31 @@ import { bxAnaalyse } from '@/core/icons'
  * https://github.com/sendya/ant-design-pro-vue/blob/master/src/router/generator-routers.js
  */
 export const defaultRouterMap = [
-  // {
-  //   'title': '仪表盘',
-  //   'key': 'dashboard',
-  //   'component': 'RouteView',
-  //   'redirect': '/dashboard/weclome',
-  //   'icon': bxAnaalyse,
-  //   'children': [{
-  //     'title': '分析页',
-  //     'path': 'analysis/:pageNum([1-9]\\d*)?',
-  //     'key': 'analysis',
-  //     'icon': ''
-  //   },
-  //   {
-  //     'title': '欢迎页',
-  //     'key': 'weclome',
-  //     'icon': ''
-  //   },
-  //   {
-  //     'title': '工作台',
-  //     'path': 'workplace',
-  //     'key': 'workplace',
-  //     'icon': ''
-  //   }
-  //   ]
-  // },
+  {
+    'title': '仪表盘',
+    'key': 'dashboard',
+    'component': 'RouteView',
+    'redirect': '/dashboard/weclome',
+    'icon': bxAnaalyse,
+    'children': [{
+      'title': '分析页',
+      'path': 'analysis/:pageNum([1-9]\\d*)?',
+      'key': 'analysis',
+      'icon': ''
+    },
+    {
+      'title': '欢迎页',
+      'key': 'weclome',
+      'icon': ''
+    },
+    {
+      'title': '工作台',
+      'path': 'workplace',
+      'key': 'workplace',
+      'icon': ''
+    }
+    ]
+  },
   // {
   //   'title': '表单页',
   //   'key': 'form',
