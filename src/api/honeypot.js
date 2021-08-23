@@ -67,3 +67,10 @@ export function getPotData (pot) {
     }
   })
 }
+
+export function getAlarmData () {
+  return axios({
+    url: '/honeyBot/honeypot/getAlarmData',
+    method: 'get'
+  })
+}
