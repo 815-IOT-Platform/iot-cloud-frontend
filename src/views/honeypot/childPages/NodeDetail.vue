@@ -99,7 +99,8 @@ export default {
         'REDIS',
         'TELNET',
         'HTTP',
-        'HTTPS'
+        'HTTPS',
+        'SSH'
       ],
       selectedProtocol: '',
       form: this.$form.createForm(this, { name: 'pot' })
