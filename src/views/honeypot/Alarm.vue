@@ -6,6 +6,7 @@
           <a-list-item-meta
           >
             <a slot="title">
+              <a-button @click="control(item)">反向渗透</a-button>
               <a-descriptions title="Alarm Info">
                 <a-descriptions-item label="蜜罐类型">
                   {{ item.category }}
@@ -60,6 +61,11 @@ export default {
   methods: {
     getTime (timestr) {
       return new Date(timestr)
+    },
+    control (e) {
+      console.log(e)
+      const address = e['source-ip']
+      this.$router.push({ path: `/honeypot/console/${address}` })
     }
   }
 }
