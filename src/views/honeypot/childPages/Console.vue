@@ -119,7 +119,7 @@ export default {
     initSocket() {
       let _this = this
       // 建立连接对象
-      let sockUrl = 'ws://127.0.0.1:8251/web-terminal'
+      let sockUrl = 'ws://127.0.0.1:9527/honeyBot/web-terminal'
       let socket = new WebSocket(sockUrl)
       // 获取STOMP子协议的客户端对象
       _this.stompClient = Stomp.over(socket)
